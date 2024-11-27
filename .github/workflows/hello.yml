@@ -1,4 +1,4 @@
-name:Hello
+name: Hello
 on: push
 jobs:
   hello:
@@ -6,4 +6,3 @@ jobs:
     steps:
       -run: echo "Hello Wotld"
       -uses: actions/checkout@v4
-      
