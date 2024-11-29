@@ -6,9 +6,10 @@ on:
         type: string
         required: true
         description: バージョン 1.2.3
-  env:
-    IMAGE_NAME: gha-image
-  jobs:
+env:
+  IMAGE_NAME: gha-image
+jobs:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -17,8 +18,9 @@ on:
       - uses: actions/checkout@v4
       - uses: docker/login-action@v3
         with:
-          regisry: ghcr.io
-          usename: ${{ secrets.GITHUN_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secret.GITHUB_TOKEN }}
       - uses: docker/metadata-action@v5
         id: meta
         with:
